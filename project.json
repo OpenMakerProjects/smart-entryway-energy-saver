@@ -1,0 +1,20 @@
+{
+  "id": 14,
+  "title": "Smart Entryway Energy Saver",
+  "repository_slug": "smart-entryway-energy-saver",
+  "category": "Smart Home",
+  "platform": "ESP32",
+  "platform_family": "arduino",
+  "difficulty": "Intermediate",
+  "estimated_hours": 20,
+  "connectivity": "MQTT",
+  "components": [
+    "current sensor",
+    "microphone module"
+  ],
+  "scope": "Build a smart home prototype that uses current sensor, microphone module to reduce unnecessary power use. Include setup instructions, a circuit diagram, tested firmware, and sample output.",
+  "key_deliverable": "Energy Saver demonstration with repeatable test steps",
+  "mode": "interactive_monitor",
+  "entrypoint": "firmware/smart-entryway-energy-saver/smart-entryway-energy-saver.ino",
+  "roadmap_source": "openmaker-2100-project-roadmap.xlsx"
+}
