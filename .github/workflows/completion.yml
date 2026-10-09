@@ -1,0 +1,20 @@
+name: Completion gates
+on: [push, pull_request]
+permissions:
+  contents: read
+jobs:
+  host-board:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: |
+          python tools/validate.py
+          g++ -std=c++17 tests/saver_test.cpp -o /tmp/saver
+          /tmp/saver
+          python -m unittest discover -s tests
+          python tools/validate_completion.py
+          pip install platformio==6.1.18
+          pio run -e esp32dev

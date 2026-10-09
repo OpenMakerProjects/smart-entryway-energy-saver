@@ -1,16 +1,2 @@
-# Wiring guide
-
-This is a low-voltage prototype wiring plan for **Smart Entryway Energy Saver**. Confirm every module's datasheet because breakout-board pinouts vary.
-
-| Component | Suggested pin | Role | Check |
-| --- | --- | --- | --- |
-| current sensor | A2 | Analog input | Confirm the module voltage and pinout before power-up. |
-| microphone module | A3 | Analog input | Confirm the module voltage and pinout before power-up. |
-| Status output | LED_BUILTIN | Output | Use a resistor when an external LED is fitted. |
-
-## Power
-
-- Use a regulated supply sized for the selected modules.
-- Join grounds unless an interface is explicitly isolated.
-- Do not connect mains voltage directly to a development board.
-- Add a fuse, emergency stop, and certified isolation where a real actuator can create risk.
+# Wiring
+GPIO21/22 connect INA219 SDA/SCL, address0x40. SensorVCC and micVCC3.3V; GND common. MicOUTGPIO34 ≤3.3V. GPIO25 drives active-high3.3V-compatible relayIN with10kΩ pulldown. RelayVCC external5V. Fused0.5A external5V→INA219VIN+; VIN−→COM;NO→nominal40mA5VLEDlamp positive; lampnegativeGND;NCunused. NodeMCU is not used: ESP32 USBpower. Join externalnegativeGND. Sensor measures lamp current, not relay/controller current. [Circuit](circuit-diagram.svg). Disconnectpower beforeassembly; verifyshuntdirection and polarity.
