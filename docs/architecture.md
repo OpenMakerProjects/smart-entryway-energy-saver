@@ -1,9 +1,2 @@
 # Architecture
-
-```text
-Sensors -> validation and filtering -> interactive monitor -> output/alert
-                                      |
-                                      +-> MQTT telemetry and logs
-```
-
-The implementation separates acquisition, decision logic, output handling, and telemetry. Hardware-specific access is kept at the edge so the core behavior can be tested with simulated readings.
+Shared saver policy wakes on two sound samples, holds output while sound or lamp current≥80mA, cuts idle after30s, and latches off on invalid data or current≥500mA. USB/MQTT RESET clears latch only with safe readings; OFF latches off. INA219 high-side sensor and microphone are actual adapters. MQTT is optional telemetry/control; local policy remains operative without networking. No measured energy-saving claim.
